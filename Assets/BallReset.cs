@@ -12,7 +12,7 @@ public class BallReset : MonoBehaviour
         originalPosition = transform.position;
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         // Option 1: check by object name
         if (collision.gameObject.name == "RightBorder")
