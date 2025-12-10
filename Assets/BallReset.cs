@@ -8,7 +8,7 @@ public class BallReset : MonoBehaviour
 
     void Start()
     {
-        // Store the ball’s starting position
+        // Store the ballï¿½s starting position
         originalPosition = transform.position;
     }
 
@@ -16,6 +16,11 @@ public class BallReset : MonoBehaviour
     {
         // Option 1: check by object name
         if (collision.gameObject.name == "RightBorder")
+        {
+            ResetBall();
+        }
+
+        if (collision.gameObject.name == "LeftBorder")
         {
             ResetBall();
         }

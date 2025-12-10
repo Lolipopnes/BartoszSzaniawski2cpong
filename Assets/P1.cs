@@ -4,30 +4,43 @@ using UnityEngine;
 
 public class P1 : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 5f;
+    private Rigidbody2D rb;
+    private Vector3 startPosition;
 
+    private float moveInput;
 
-    // Start is called before the first frame update
+    [Header("Clamp Settings")]
+    public float topLimit = 4f;    
+    public float bottomLimit = -4f; 
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        bool isPressingUp = Input.GetKey(KeyCode.W);
-        bool isPressingDown = Input.GetKey(KeyCode.S);
+        moveInput = 0f;
+        if (Input.GetKey(KeyCode.W)) moveInput = 1f;
+        if (Input.GetKey(KeyCode.S)) moveInput = -1f;
+    }
 
-        if (isPressingUp)
-        {
-            transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
-        }
+    void FixedUpdate()
+    {
+        Vector2 position = rb.position;
+        position.y += moveInput * moveSpeed * Time.fixedDeltaTime;
 
+        
+        position.y = Mathf.Clamp(position.y, bottomLimit, topLimit);
 
-        if (isPressingDown)
-        {
-            transform.Translate(Vector2.down * Time.deltaTime * moveSpeed);
-        }
+        rb.MovePosition(position);
+    }
+
+    public void ResetPosition()
+    {
+        rb.position = startPosition;
     }
 }
+
