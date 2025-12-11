@@ -65,5 +65,6 @@ public class Ball : MonoBehaviour
         float yDir = Random.Range(-0.5f, 0.5f);
         rb.velocity = Vector2.zero; 
         rb.AddForce(new Vector2(xDir, yDir) * speed);
+        Debug.Log("x " + xDir + " y " + yDir);
     }
 }

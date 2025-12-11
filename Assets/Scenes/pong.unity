@@ -871,7 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Score: 0
   player2Score: 0
-  winScore: 1
+  winScore: 3
   Player1ScoreText: {fileID: 1249753304}
   Player2ScoreText: {fileID: 124147483}
   winScreen: {fileID: 1226472424}
